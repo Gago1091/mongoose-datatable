@@ -8,7 +8,6 @@
   },
   "author": "Eric Herve <eric.herve.95@gmail.com>",
   "main": "./dist/datatable.js",
-  "type": "module",
   "directories": {
     "lib": "dist"
   },

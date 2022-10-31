@@ -571,6 +571,9 @@ export class DataTableModule {
         return this.model.countDocuments(options.conditions);
     }
     async recordsFiltered(options, aggregateOptions, recordsTotal) {
+        if (options.returnFilteredCount !== true) {
+            return Promise.resolve(recordsTotal);
+        }
         if (!aggregateOptions.search && !aggregateOptions.afterPopulateSearch) {
             return Promise.resolve(recordsTotal);
         }

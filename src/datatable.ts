@@ -97,6 +97,7 @@ export interface IOptions {
   conditions?: any;
   select?: any;
   disableCount?: boolean;
+  returnFilteredCount?: boolean;
 }
 
 export interface IData {
@@ -752,6 +753,9 @@ export class DataTableModule {
     aggregateOptions: IAggregateOptions,
     recordsTotal: number
   ): Promise<number> {
+    if (options.returnFilteredCount !== true) {
+      return Promise.resolve(recordsTotal);
+    }
     if (!aggregateOptions.search && !aggregateOptions.afterPopulateSearch) {
       return Promise.resolve(recordsTotal);
     }
